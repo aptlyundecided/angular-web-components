@@ -1,0 +1,88 @@
+<div>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        Sub Sandwich Form
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="sandwichForm">
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Sandwich Type</mat-label>
+            <mat-select [formControlName]="'selectedSandwich'">
+              <mat-option *ngFor="let food of sandwichTypes" [value]="food.value">
+                {{food.value}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+          <!-- SANDWICH SIZE SELECTION -->
+          <mat-form-field appearance="fill">
+            <mat-label>Sandwich Size</mat-label>
+            <mat-select [formControlName]="'selectedSandwichSize'">
+              <mat-option *ngFor="let food of sandwichSizes" [value]="food.value">
+                {{food.value}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <div>
+            <mat-slide-toggle
+              [formControlName]="'containsChips'"
+            >Include Chips</mat-slide-toggle>
+
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+            <!-- CHIP TYPE SELECTION -->
+            <mat-form-field appearance="fill">
+              <mat-label>Chips</mat-label>
+              <mat-select [formControlName]="'chipTypeSelection'">
+                <mat-option *ngFor="let food of chipSelections" [value]="food.value">
+                  {{food.value}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-slide-toggle
+              [formControlName]="'containsDrink'"
+            >Include Drink</mat-slide-toggle>
+
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+            <!-- DRINK TYPE SELECTION -->
+            <mat-form-field
+              appearance="fill"
+            >
+              <mat-label>Drink Selection</mat-label>
+              <mat-select
+                [formControlName]="'drinkTypeSelection'"
+              >
+                <mat-option *ngFor="let food of drinkSelections" [value]="food.value">
+                  {{food.value}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        Form Output:
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{(sandwichForm.valueChanges | async | json)}}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
