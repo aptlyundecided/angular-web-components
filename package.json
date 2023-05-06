@@ -7,7 +7,8 @@
     "build": "ng build",
     "build-components:prod": "ng build --configuration=production --output-hashing=none --single-bundle=true",
     "package-components:prod":"cat dist/angular-blog/polyfills.js dist/angular-blog/main.js > ./bundle/web-components-package.js",
-    "bundle-components:prod":"npm run build-components:prod && npm run package-components:prod",
+    "migrate-styles:prod": "cat dist/angular-blog/styles.css > bundle/styles.css",
+    "bundle-components:prod":"npm run build-components:prod && npm run migrate-styles:prod && npm run package-components:prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
