@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Subject, BehaviorSubject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
